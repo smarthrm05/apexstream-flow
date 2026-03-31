@@ -113,12 +113,10 @@ const ChartTooltipContent = React.forwardRef<
       labelClassName,
       formatter,
       color,
-      ...props
-    }: any,
       nameKey,
       labelKey,
-    },
-    ref,
+    }: any,
+    ref: any,
   ) => {
     const { config } = useChart();
 
