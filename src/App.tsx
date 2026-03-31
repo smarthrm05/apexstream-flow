@@ -10,6 +10,7 @@ import ProjectsPage from "@/pages/ProjectsPage";
 import KanbanPage from "@/pages/KanbanPage";
 import GembaWalkPage from "@/pages/GembaWalkPage";
 import PlaceholderPage from "@/pages/PlaceholderPage";
+import VSMPage from "@/pages/VSMPage";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
