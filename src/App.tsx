@@ -29,7 +29,7 @@ const App = () => (
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/kanban" element={<KanbanPage />} />
             <Route path="/gemba-walk" element={<GembaWalkPage />} />
-            <Route path="/vsm" element={<PlaceholderPage title="Value Stream Mapping" description="Drag-and-drop VSM canvas with process blocks, inventory nodes, and timeline visualization. Coming soon." />} />
+            <Route path="/vsm" element={<VSMPage />} />
             <Route path="/root-cause" element={<PlaceholderPage title="Root Cause Analysis" description="5 Whys interactive form and cause tracking table. Coming soon." />} />
             <Route path="/fishbone" element={<PlaceholderPage title="Fishbone Diagram" description="Visual fishbone (Ishikawa) diagram with categories: Man, Machine, Method, Material, Environment. Coming soon." />} />
             <Route path="/improvement" element={<PlaceholderPage title="Improvement Plan" description="Task management with PIC assignment, deadlines, and status tracking. Coming soon." />} />
