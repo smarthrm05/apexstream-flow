@@ -32,7 +32,7 @@ const App = () => (
             <Route path="/gemba-walk" element={<GembaWalkPage />} />
             <Route path="/vsm" element={<VSMPage />} />
             <Route path="/root-cause" element={<PlaceholderPage title="Root Cause Analysis" description="5 Whys interactive form and cause tracking table. Coming soon." />} />
-            <Route path="/fishbone" element={<PlaceholderPage title="Fishbone Diagram" description="Visual fishbone (Ishikawa) diagram with categories: Man, Machine, Method, Material, Environment. Coming soon." />} />
+            <Route path="/fishbone" element={<FishbonePage />} />
             <Route path="/improvement" element={<PlaceholderPage title="Improvement Plan" description="Task management with PIC assignment, deadlines, and status tracking. Coming soon." />} />
             <Route path="/pdca" element={<PlaceholderPage title="PDCA Cycle" description="Plan-Do-Check-Act workflow with task management per stage. Coming soon." />} />
             <Route path="/analytics" element={<PlaceholderPage title="Analytics" description="KPI dashboards, OEE monitoring, trend analytics, and waste analysis. Coming soon." />} />
