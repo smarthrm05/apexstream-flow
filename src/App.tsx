@@ -12,6 +12,7 @@ import GembaWalkPage from "@/pages/GembaWalkPage";
 import PlaceholderPage from "@/pages/PlaceholderPage";
 import VSMPage from "@/pages/VSMPage";
 import FishbonePage from "@/pages/FishbonePage";
+import RootCausePage from "@/pages/RootCausePage";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -31,7 +32,7 @@ const App = () => (
             <Route path="/kanban" element={<KanbanPage />} />
             <Route path="/gemba-walk" element={<GembaWalkPage />} />
             <Route path="/vsm" element={<VSMPage />} />
-            <Route path="/root-cause" element={<PlaceholderPage title="Root Cause Analysis" description="5 Whys interactive form and cause tracking table. Coming soon." />} />
+            <Route path="/root-cause" element={<RootCausePage />} />
             <Route path="/fishbone" element={<FishbonePage />} />
             <Route path="/improvement" element={<PlaceholderPage title="Improvement Plan" description="Task management with PIC assignment, deadlines, and status tracking. Coming soon." />} />
             <Route path="/pdca" element={<PlaceholderPage title="PDCA Cycle" description="Plan-Do-Check-Act workflow with task management per stage. Coming soon." />} />
