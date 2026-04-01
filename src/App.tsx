@@ -11,6 +11,7 @@ import KanbanPage from "@/pages/KanbanPage";
 import GembaWalkPage from "@/pages/GembaWalkPage";
 import PlaceholderPage from "@/pages/PlaceholderPage";
 import VSMPage from "@/pages/VSMPage";
+import FishbonePage from "@/pages/FishbonePage";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
