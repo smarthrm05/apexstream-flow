@@ -4,8 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
-  Plus, Trash2, GripVertical, Factory, Package, Truck, Users,
-  ArrowRight, Clock, Settings2, Save, RotateCcw
+  Plus, Trash2, GripVertical, ArrowRight, Clock, Settings2, Save, RotateCcw
 } from 'lucide-react';
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter
@@ -36,11 +35,93 @@ interface VSMNode {
   };
 }
 
-const nodeConfig: Record<NodeType, { icon: typeof Factory; color: string; bgColor: string }> = {
-  supplier: { icon: Truck, color: 'text-chart-5', bgColor: 'bg-chart-5/10' },
-  process: { icon: Settings2, color: 'text-primary', bgColor: 'bg-primary/10' },
-  inventory: { icon: Package, color: 'text-warning', bgColor: 'bg-warning/10' },
-  customer: { icon: Users, color: 'text-success', bgColor: 'bg-success/10' },
+// ── Standard VSM SVG Icons ──
+
+function VSMSupplierIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Factory building */}
+      <rect x="4" y="20" width="40" height="24" rx="1" fill="currentColor" opacity="0.15" stroke="currentColor" strokeWidth="2"/>
+      <polygon points="4,20 14,8 14,20" fill="currentColor" opacity="0.25" stroke="currentColor" strokeWidth="2"/>
+      <polygon points="14,20 24,8 24,20" fill="currentColor" opacity="0.25" stroke="currentColor" strokeWidth="2"/>
+      <polygon points="24,20 34,8 34,20" fill="currentColor" opacity="0.25" stroke="currentColor" strokeWidth="2"/>
+      {/* Chimney */}
+      <rect x="36" y="4" width="4" height="16" fill="currentColor" opacity="0.3" stroke="currentColor" strokeWidth="1.5"/>
+      {/* Windows */}
+      <rect x="10" y="28" width="6" height="6" rx="0.5" fill="currentColor" opacity="0.4"/>
+      <rect x="21" y="28" width="6" height="6" rx="0.5" fill="currentColor" opacity="0.4"/>
+      <rect x="32" y="28" width="6" height="6" rx="0.5" fill="currentColor" opacity="0.4"/>
+      {/* Door */}
+      <rect x="19" y="36" width="10" height="8" rx="0.5" fill="currentColor" opacity="0.3"/>
+    </svg>
+  );
+}
+
+function VSMProcessIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Process box */}
+      <rect x="4" y="8" width="40" height="32" rx="2" fill="currentColor" opacity="0.12" stroke="currentColor" strokeWidth="2"/>
+      {/* Gear symbol inside */}
+      <circle cx="24" cy="24" r="8" stroke="currentColor" strokeWidth="2" opacity="0.6"/>
+      <circle cx="24" cy="24" r="3" fill="currentColor" opacity="0.4"/>
+      {/* Gear teeth */}
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => {
+        const rad = (angle * Math.PI) / 180;
+        const x1 = 24 + Math.cos(rad) * 8;
+        const y1 = 24 + Math.sin(rad) * 8;
+        const x2 = 24 + Math.cos(rad) * 11;
+        const y2 = 24 + Math.sin(rad) * 11;
+        return <line key={angle} x1={x1} y1={y1} x2={x2} y2={y2} stroke="currentColor" strokeWidth="2" opacity="0.5"/>;
+      })}
+    </svg>
+  );
+}
+
+function VSMInventoryIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Triangle - standard VSM inventory symbol */}
+      <polygon points="24,4 44,40 4,40" fill="currentColor" opacity="0.15" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+      {/* "I" letter inside */}
+      <text x="24" y="34" textAnchor="middle" fill="currentColor" fontSize="14" fontWeight="bold" opacity="0.6">I</text>
+    </svg>
+  );
+}
+
+function VSMCustomerIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* House shape - standard VSM customer/factory */}
+      <polygon points="24,4 44,20 44,44 4,44 4,20" fill="currentColor" opacity="0.12" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+      {/* Person silhouette */}
+      <circle cx="24" cy="22" r="4" fill="currentColor" opacity="0.4"/>
+      <path d="M16 38 C16 30 32 30 32 38" fill="currentColor" opacity="0.3"/>
+    </svg>
+  );
+}
+
+function VSMPushArrow({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 16" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="8" x2="22" y2="8" stroke="currentColor" strokeWidth="2.5"/>
+      <polygon points="22,3 32,8 22,13" fill="currentColor"/>
+    </svg>
+  );
+}
+
+const VSM_ICONS: Record<NodeType, React.FC<{ className?: string }>> = {
+  supplier: VSMSupplierIcon,
+  process: VSMProcessIcon,
+  inventory: VSMInventoryIcon,
+  customer: VSMCustomerIcon,
+};
+
+const nodeConfig: Record<NodeType, { color: string; bgColor: string; borderColor: string }> = {
+  supplier: { color: 'text-chart-5', bgColor: 'bg-chart-5/10', borderColor: 'border-chart-5/30' },
+  process: { color: 'text-primary', bgColor: 'bg-primary/10', borderColor: 'border-primary/30' },
+  inventory: { color: 'text-warning', bgColor: 'bg-warning/10', borderColor: 'border-warning/30' },
+  customer: { color: 'text-success', bgColor: 'bg-success/10', borderColor: 'border-success/30' },
 };
 
 const initialNodes: VSMNode[] = [
@@ -79,7 +160,7 @@ function VSMNodeCard({
   onDragStart: (e: React.MouseEvent) => void;
 }) {
   const config = nodeConfig[node.type];
-  const Icon = config.icon;
+  const IconComponent = VSM_ICONS[node.type];
 
   return (
     <div
@@ -95,14 +176,15 @@ function VSMNodeCard({
       }}
     >
       <div className={cn(
-        'rounded-lg border bg-card shadow-sm min-w-[160px]',
-        node.type === 'inventory' ? 'min-w-[120px]' : ''
+        'rounded-lg border bg-card shadow-sm',
+        node.type === 'inventory' ? 'min-w-[130px]' : 'min-w-[170px]',
+        config.borderColor
       )}>
-        {/* Header */}
-        <div className={cn('flex items-center gap-2 px-3 py-2 rounded-t-lg border-b', config.bgColor)}>
-          <GripVertical className="h-3.5 w-3.5 text-muted-foreground" />
-          <Icon className={cn('h-4 w-4', config.color)} />
-          <span className="text-xs font-semibold text-foreground truncate">{node.label}</span>
+        {/* VSM Icon Header */}
+        <div className={cn('flex items-center gap-2.5 px-3 py-2.5 rounded-t-lg border-b', config.bgColor, config.borderColor)}>
+          <GripVertical className="h-3 w-3 text-muted-foreground/50" />
+          <IconComponent className={cn('h-7 w-7', config.color)} />
+          <span className="text-xs font-bold text-foreground truncate">{node.label}</span>
         </div>
 
         {/* Body */}
@@ -117,13 +199,18 @@ function VSMNodeCard({
             </>
           )}
           {node.type === 'inventory' && (
-            <DataRow label="Stock" value={`${node.data.inventoryCount ?? 0} ${node.data.inventoryUnit ?? 'pcs'}`} />
+            <>
+              <div className="flex justify-center py-1">
+                <VSMInventoryIcon className={cn('h-8 w-8', config.color)} />
+              </div>
+              <DataRow label="Stock" value={`${node.data.inventoryCount ?? 0} ${node.data.inventoryUnit ?? 'pcs'}`} />
+            </>
           )}
           {node.type === 'supplier' && (
             <DataRow label="Lead Time" value={`${node.data.leadTime ?? 0}d`} />
           )}
           {node.type === 'customer' && (
-            <p className="text-[10px] text-muted-foreground">End point</p>
+            <p className="text-[10px] text-muted-foreground italic">End point</p>
           )}
         </div>
       </div>
@@ -135,30 +222,23 @@ function DataRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex justify-between text-[10px]">
       <span className="text-muted-foreground">{label}</span>
-      <span className="font-medium text-foreground">{value}</span>
+      <span className="font-semibold text-foreground">{value}</span>
     </div>
   );
 }
 
 function ConnectionArrow({ fromX, fromY, toX, toY }: { fromX: number; fromY: number; toX: number; toY: number }) {
-  const midX = (fromX + toX) / 2;
   return (
     <g>
-      <path
-        d={`M ${fromX} ${fromY} C ${midX} ${fromY}, ${midX} ${toY}, ${toX} ${toY}`}
-        stroke="hsl(var(--border))"
-        strokeWidth={2}
-        fill="none"
-        strokeDasharray="6 3"
-      />
+      {/* Striped push arrow */}
+      <line x1={fromX} y1={fromY} x2={toX - 10} y2={toY} stroke="hsl(var(--muted-foreground))" strokeWidth={2} strokeDasharray="8 4" />
       <polygon
-        points={`${toX},${toY} ${toX - 8},${toY - 4} ${toX - 8},${toY + 4}`}
+        points={`${toX},${toY} ${toX - 10},${toY - 5} ${toX - 10},${toY + 5}`}
         fill="hsl(var(--muted-foreground))"
       />
     </g>
   );
 }
-
 export default function VSMPage() {
   const { activeProject } = useAppStore();
   const [nodes, setNodes] = useState<VSMNode[]>(initialNodes);
