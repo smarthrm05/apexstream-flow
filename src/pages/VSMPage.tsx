@@ -340,7 +340,7 @@ export default function VSMPage() {
       <div className="flex flex-wrap gap-2">
         {(['supplier', 'process', 'inventory', 'customer'] as NodeType[]).map((type) => {
           const config = nodeConfig[type];
-          const Icon = config.icon;
+          const VsmIcon = VSM_ICONS[type];
           return (
             <Button
               key={type}
@@ -349,7 +349,7 @@ export default function VSMPage() {
               className="gap-1.5"
               onClick={() => { setAddType(type); setNewLabel(''); }}
             >
-              <Icon className={cn('h-3.5 w-3.5', config.color)} />
+              <VsmIcon className={cn('h-5 w-5', config.color)} />
               <span className="capitalize text-xs">{type}</span>
             </Button>
           );
