@@ -13,6 +13,7 @@ import PlaceholderPage from "@/pages/PlaceholderPage";
 import VSMPage from "@/pages/VSMPage";
 import FishbonePage from "@/pages/FishbonePage";
 import RootCausePage from "@/pages/RootCausePage";
+import PDCAPage from "@/pages/PDCAPage";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -35,7 +36,7 @@ const App = () => (
             <Route path="/root-cause" element={<RootCausePage />} />
             <Route path="/fishbone" element={<FishbonePage />} />
             <Route path="/improvement" element={<PlaceholderPage title="Improvement Plan" description="Task management with PIC assignment, deadlines, and status tracking. Coming soon." />} />
-            <Route path="/pdca" element={<PlaceholderPage title="PDCA Cycle" description="Plan-Do-Check-Act workflow with task management per stage. Coming soon." />} />
+            <Route path="/pdca" element={<PDCAPage />} />
             <Route path="/analytics" element={<PlaceholderPage title="Analytics" description="KPI dashboards, OEE monitoring, trend analytics, and waste analysis. Coming soon." />} />
             <Route path="/reports" element={<PlaceholderPage title="Report Builder" description="5-step wizard to generate PPT reports from project data. Coming soon." />} />
             <Route path="/chat" element={<PlaceholderPage title="Team Chat" description="Real-time channel-based messaging with file attachments and @mentions. Coming soon." />} />
