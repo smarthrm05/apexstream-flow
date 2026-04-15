@@ -36,7 +36,7 @@ const App = () => (
             <Route path="/vsm" element={<VSMPage />} />
             <Route path="/root-cause" element={<RootCausePage />} />
             <Route path="/fishbone" element={<FishbonePage />} />
-            <Route path="/improvement" element={<PlaceholderPage title="Improvement Plan" description="Task management with PIC assignment, deadlines, and status tracking. Coming soon." />} />
+            <Route path="/improvement" element={<ImprovementPlanPage />} />
             <Route path="/pdca" element={<PDCAPage />} />
             <Route path="/analytics" element={<PlaceholderPage title="Analytics" description="KPI dashboards, OEE monitoring, trend analytics, and waste analysis. Coming soon." />} />
             <Route path="/reports" element={<PlaceholderPage title="Report Builder" description="5-step wizard to generate PPT reports from project data. Coming soon." />} />
