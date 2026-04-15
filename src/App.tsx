@@ -14,6 +14,7 @@ import VSMPage from "@/pages/VSMPage";
 import FishbonePage from "@/pages/FishbonePage";
 import RootCausePage from "@/pages/RootCausePage";
 import PDCAPage from "@/pages/PDCAPage";
+import ImprovementPlanPage from "@/pages/ImprovementPlanPage";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -35,7 +36,7 @@ const App = () => (
             <Route path="/vsm" element={<VSMPage />} />
             <Route path="/root-cause" element={<RootCausePage />} />
             <Route path="/fishbone" element={<FishbonePage />} />
-            <Route path="/improvement" element={<PlaceholderPage title="Improvement Plan" description="Task management with PIC assignment, deadlines, and status tracking. Coming soon." />} />
+            <Route path="/improvement" element={<ImprovementPlanPage />} />
             <Route path="/pdca" element={<PDCAPage />} />
             <Route path="/analytics" element={<PlaceholderPage title="Analytics" description="KPI dashboards, OEE monitoring, trend analytics, and waste analysis. Coming soon." />} />
             <Route path="/reports" element={<PlaceholderPage title="Report Builder" description="5-step wizard to generate PPT reports from project data. Coming soon." />} />
