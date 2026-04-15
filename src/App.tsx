@@ -14,6 +14,7 @@ import VSMPage from "@/pages/VSMPage";
 import FishbonePage from "@/pages/FishbonePage";
 import RootCausePage from "@/pages/RootCausePage";
 import PDCAPage from "@/pages/PDCAPage";
+import ImprovementPlanPage from "@/pages/ImprovementPlanPage";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
